@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="Физика">
+    <meta name="theme-color" content="#E8EEF4">
+    <link rel="manifest" href="manifest.json">
+    <link rel="stylesheet" href="style.css">
+    <title>Физика - формулы</title>
+</head>
+<body>
+<div id="app">
+    <div id="screen-sections" class="screen active">
+        <ul id="sections-list"></ul>
+    </div>
+
+    <div id="screen-cards" class="screen">
+        <button id="btn-back" onclick="goBack()">К разделам</button>
+        <div id="card-box">
+            <div id="card-content"></div>
+        </div>
+        <div id="card-buttons">
+            <button id="btn-next" onclick="nextCard()">дальше</button>
+            <button id="btn-show" onclick="toggleCard()">покажи</button>
+        </div>
+    </div>
+</div>
+
+<script src="data.js"></script>
+<script src="index.js"></script>
+<script>
+    if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('./sw.js');
+    }
+</script>
+</body>
+</html>

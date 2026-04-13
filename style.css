@@ -1,0 +1,178 @@
+:root {
+    --bg: #E8EEF4;
+    --surface: #E8EEF4;
+    --card: #FFFFFF;
+    --accent: #4A7AA0;
+    --text-primary: #1A3050;
+    --text-secondary: #6A90A8;
+    --border: #D4DCE8;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    -webkit-tap-highlight-color: transparent;
+}
+
+body {
+    background: var(--bg);
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+#app {
+    width: 100%;
+    max-width: 480px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    padding: 20px 16px;
+}
+
+.screen { display: none; flex-direction: column; flex: 1; }
+.screen.active { display: flex; }
+
+/* Экран разделов */
+#sections-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    justify-content: center;
+    flex: 1;
+    padding: 16px 0;
+}
+
+.section-btn {
+    width: 100%;
+    padding: 18px 16px;
+    background: var(--card);
+    border: 2px solid var(--accent);
+    border-radius: 14px;
+    font-size: 18px;
+    font-style: italic;
+    color: var(--text-primary);
+    cursor: pointer;
+    text-align: center;
+    transition: background 0.15s;
+}
+
+.section-btn:hover { background: #D4DCE8; }
+.section-btn:active { background: #C8D4E0; }
+
+/* Экран карточек */
+#screen-cards {
+    gap: 0;
+}
+
+#btn-back {
+    align-self: center;
+    width: 70%;
+    padding: 16px;
+    margin-top: 20px;
+    background: var(--card);
+    border: 2px solid var(--accent);
+    border-radius: 14px;
+    font-size: 18px;
+    font-style: italic;
+    color: var(--accent);
+    cursor: pointer;
+    transition: background 0.15s;
+}
+
+#btn-back:hover { background: #D4DCE8; }
+
+#card-box {
+    flex: 1;
+    margin: 16px 0;
+    background: var(--card);
+    border: 2px solid var(--accent);
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+}
+
+#card-content {
+    width: 100%;
+    text-align: center;
+}
+
+.card-kim {
+    font-size: 20px;
+    font-style: italic;
+    color: var(--text-secondary);
+    margin-bottom: 12px;
+}
+
+.card-раздел {
+    font-size: 18px;
+    font-style: italic;
+    color: var(--text-secondary);
+    margin-bottom: 20px;
+    opacity: 0.7;
+}
+
+.card-prompt {
+    font-size: 22px;
+    font-style: italic;
+    color: var(--text-secondary);
+    line-height: 1.4;
+}
+
+.placeholder-text {
+    font-size: 18px;
+    color: var(--text-secondary);
+    font-style: italic;
+}
+
+#card-content img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+}
+
+#card-buttons {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 16px;
+}
+
+#btn-next, #btn-show {
+    flex: 1;
+    padding: 18px;
+    border-radius: 14px;
+    font-size: 18px;
+    font-style: italic;
+    cursor: pointer;
+    transition: background 0.15s;
+}
+
+#btn-next {
+    background: var(--card);
+    border: 2px solid var(--accent);
+    color: var(--accent);
+}
+
+#btn-next:hover { background: #D4DCE8; }
+
+#btn-show {
+    background: var(--accent);
+    border: 2px solid var(--accent);
+    color: var(--card);
+}
+
+#btn-show:hover { background: #3D6A8E; }
+
+@media (min-width: 480px) {
+    #app { padding: 32px 24px; }
+    .section-btn, #btn-back, #btn-next, #btn-show { font-size: 20px; }
+    .card-title { font-size: 22px; }
+    .card-prompt { font-size: 24px; }
+}
