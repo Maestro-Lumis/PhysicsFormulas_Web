@@ -3,6 +3,8 @@ console.log('Happy developing ✨')
 let currentSection = null;
 let currentIndex = 0;
 let isFlipped = false;
+let shuffledFormulas = [];
+let startX = 0;
 
 function init() {
     const list = document.getElementById('sections-list');
@@ -18,12 +20,23 @@ function init() {
     });
 }
 
+function shuffle(arr) {
+    const a = [...arr];
+    for (let i = a.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [a[i], a[j]] = [a[j], a[i]];
+    }
+    return a;
+}
+
 function openSection(id) {
     currentSection = SECTIONS.find(s => s.id === id);
+    shuffledFormulas = shuffle(currentSection.formulas);
     currentIndex = 0;
     isFlipped = false;
     showScreen('screen-cards');
     renderCard();
+    initSwipe();
 }
 
 function goBack() {
@@ -33,7 +46,14 @@ function goBack() {
 
 function nextCard() {
     if (!currentSection) return;
-    currentIndex = (currentIndex + 1) % currentSection.formulas.length;
+    currentIndex = (currentIndex + 1) % shuffledFormulas.length;
+    isFlipped = false;
+    renderCard();
+}
+
+function prevCard() {
+    if (!currentSection) return;
+    currentIndex = (currentIndex - 1 + shuffledFormulas.length) % shuffledFormulas.length;
     isFlipped = false;
     renderCard();
 }
@@ -44,7 +64,7 @@ function toggleCard() {
 }
 
 function renderCard() {
-    const formula = currentSection.formulas[currentIndex];
+    const formula = shuffledFormulas[currentIndex];
     const content = document.getElementById('card-content');
     document.getElementById('btn-show').textContent = isFlipped ? 'скрыть' : 'покажи';
 
@@ -61,6 +81,24 @@ function renderCard() {
             <p class="card-prompt">${formula.prompt}</p>
         `;
     }
+}
+
+function initSwipe() {
+    const card = document.getElementById('card-box');
+
+    card.addEventListener('click', () => toggleCard());
+
+    card.addEventListener('touchstart', e => {
+        startX = e.touches[0].clientX;
+    }, { passive: true });
+
+    card.addEventListener('touchend', e => {
+        const diff = startX - e.changedTouches[0].clientX;
+        if (Math.abs(diff) > 50) {
+            if (diff > 0) nextCard();
+            else prevCard();
+        }
+    }, { passive: true });
 }
 
 function showScreen(id) {
