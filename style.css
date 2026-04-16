@@ -5,6 +5,7 @@
     --accent: #4A7AA0;
     --text-primary: #1A3050;
     --text-secondary: #6A90A8;
+    --text-secondary-Section: #B97040;
     --border: #D4DCE8;
 }
 
@@ -113,7 +114,7 @@ body {
 .card-раздел {
     font-size: 18px;
     font-style: italic;
-    color: var(--text-secondary);
+    color: var(--text-secondary-Section);
     margin-bottom: 20px;
     opacity: 0.7;
 }

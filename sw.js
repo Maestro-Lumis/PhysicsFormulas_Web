@@ -8,27 +8,18 @@ const FILES = [
     './manifest.json',
     './icons/icon-192.png',
     './icons/icon-512.png',
-    './images/mechanics/kinematics/1.png',
-    './images/mechanics/kinematics/2.png',
-    './images/mechanics/kinematics/3.png',
-    './images/mechanics/kinematics/4.png',
-    './images/mechanics/kinematics/5.png',
-    './images/mechanics/kinematics/6.png',
-    './images/mechanics/kinematics/7.png',
-    './images/mechanics/kinematics/8.png',
-    './images/mechanics/kinematics/9.png',
-    './images/mechanics/kinematics/10.png',
-    './images/mechanics/kinematics/11.png',
-    './images/mechanics/kinematics/12.png',
-    './images/mechanics/kinematics/13.png',
-    './images/mechanics/kinematics/14.png',
-    './images/mechanics/kinematics/15.png',
+    // Kinematics 1–15
+    ...Array.from({length: 15}, (_, i) => `./images/mechanics/kinematics/${i+1}.png`),
+    // Dynamics 16–24
+    ...Array.from({length: 9}, (_, i) => `./images/mechanics/dynamics/${i+16}.png`),
+    // Conservation of Energy 25–36
+    ...Array.from({length: 12}, (_, i) => `./images/mechanics/conservationOfEnergy/${i+25}.png`),
+    // Statics 37–42
+    ...Array.from({length: 6}, (_, i) => `./images/mechanics/statics/${i+37}.png`),
 ];
 
 self.addEventListener('install', e => {
-    e.waitUntil(
-        caches.open(CACHE).then(cache => cache.addAll(FILES))
-    );
+    e.waitUntil(caches.open(CACHE).then(cache => cache.addAll(FILES)));
     self.skipWaiting();
 });
 
