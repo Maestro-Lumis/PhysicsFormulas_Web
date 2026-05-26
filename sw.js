@@ -16,6 +16,10 @@ const FILES = [
     ...Array.from({length: 12}, (_, i) => `./images/mechanics/conservationOfEnergy/${i+25}.png`),
     // Statics 37–42
     ...Array.from({length: 6}, (_, i) => `./images/mechanics/statics/${i+37}.png`),
+    // Колебания и волны 43–49
+    ...Array.from({length: 7}, (_, i) => `./images/oscillationsAndWaves/${i+43}.png`),
+    // Молекулярная физика + Термодинамика 50–74
+    ...Array.from({length: 25}, (_, i) => `./images/molecularPhysics/${i+50}.png`),
 ];
 
 self.addEventListener('install', e => {
