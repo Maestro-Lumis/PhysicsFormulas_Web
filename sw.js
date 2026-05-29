@@ -1,4 +1,4 @@
-const CACHE = 'physics-v1';
+const CACHE = 'physics-v4';
 const FILES = [
     './',
     './index.html',
